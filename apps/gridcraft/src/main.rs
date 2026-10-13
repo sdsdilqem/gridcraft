@@ -232,6 +232,8 @@ fn icon() -> Option<egui::IconData> {
 fn main() -> eframe::Result<()> {
     // First, so the panic hook and every start-up warning are recorded (`logging`).
     let logger = logging::install();
+    // Stop here, with a message, unless this computer has a valid license (`craft-license`).
+    craft_license::enforce("GridCraft");
     // Commands catch their panics (`Session::execute`), but the default hook only prints to
     // standard error; this one sends every panic, caught or not, to the log file too, with a
     // backtrace when RUST_BACKTRACE is set.
